@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<form method="post" class="card slide-up">
+    <h2>Quiz</h2>
+
+    {% for q in questions %}
+        <div class="question">
+            <p>{{ q.question }}</p>
+            {% for option in q.options %}
+                <label class="option">
+                    <input type="radio" name="q{{ loop.index0 }}" value="{{ option }}" required>
+                    {{ option }}
+                </label>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <button class="btn">Verstuur</button>
+</form>
+</body>
+</html>
