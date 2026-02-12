@@ -1,4 +1,4 @@
-def calculate_result(score: int) -> str:
+def get_result(score):
     if score <= 3:
         return "Dom"
     elif score <= 5:
