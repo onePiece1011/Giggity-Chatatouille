@@ -1,7 +1,5 @@
-from dataclasses import dataclass
-
-@dataclass
 class Question:
-    question: str
-    options: list
-    correct_answer: int
+    def __init__(self, question, options, correct):
+        self.question = question
+        self.options = options
+        self.correct = correct
