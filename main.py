@@ -1,8 +1,19 @@
-from project_manager import SmithGame
+from project_manager import load_questions
+from task_manager import ask_question
+from utils import calculate_result
 
-def main():
-    game = SmithGame("Mandu de Smid")
-    game.run()
+def start_game():
+    print("=== QUIZ GAME START ===")
+    questions = load_questions()
+    score = 0
+
+    for q in questions:
+        if ask_question(q):
+            score += 1
+
+    result = calculate_result(score)
+    print(f"\nScore: {score}/10")
+    print(f"Resultaat: {result}")
 
 if __name__ == "__main__":
-    main()
+    start_game()
