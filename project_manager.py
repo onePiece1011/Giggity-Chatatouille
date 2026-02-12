@@ -1,7 +1,7 @@
 from flask import render_template, request
 from models import Question
 from task_manager import calculate_score
-from utils import get_result
+from utils import calculate_result
 
 def load_questions():
     return [
@@ -12,13 +12,17 @@ def load_questions():
         ),
         Question(
             "Wie ontwikkelde de evolutietheorie?",
-            ["Darwin", "Newton", "Tesla"],
+            ["Newton", "Darwin", "Tesla"],
             "Darwin"
         ),
-        # maak dit 10
+        Question(
+            "Welke planeet is de grootste?",
+            ["Mars", "Jupiter", "Venus"],
+            "Jupiter"
+        )
     ]
 
-def setup_routes(app):
+def register_routes(app):
     questions = load_questions()
 
     @app.route("/")
@@ -29,7 +33,7 @@ def setup_routes(app):
     def quiz():
         if request.method == "POST":
             score = calculate_score(questions, request.form)
-            result = get_result(score)
+            result = calculate_result(score)
             return render_template("result.html", score=score, result=result)
 
         return render_template("quiz.html", questions=questions)
