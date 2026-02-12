@@ -1,6 +1,2 @@
-def validate_power(power: int, max_power: int = 100) -> int:
-    if power < 0:
-        return 0
-    if power > max_power:
-        return max_power
-    return power
+def validate_answer(answer: str) -> bool:
+    return answer in ["1", "2", "3"]
