@@ -1,6 +1,77 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #111;
+    background: #0b0b0b;
     color: #fff;
-    text-align: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background: #161616;
+    padding: 30px;
+    border-radius: 14px;
+    width: 420px;
+    animation-duration: 0.6s;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.option {
+    display: block;
+    margin: 6px 0;
+}
+
+.btn {
+    background: #00ff99;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #00cc77;
+}
+
+/* Animaties */
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 0.7s ease-out;
+}
+
+.pop-in {
+    animation: popIn 0.5s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,255,153,0.6); }
+    100% { box-shadow: 0 0 0 15px rgba(0,255,153,0); }
 }
