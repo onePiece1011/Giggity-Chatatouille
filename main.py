@@ -1,19 +1,8 @@
-from project_manager import load_questions
-from task_manager import ask_question
-from utils import calculate_result
+from flask import Flask
+from project_manager import setup_routes
 
-def start_game():
-    print("=== QUIZ GAME START ===")
-    questions = load_questions()
-    score = 0
-
-    for q in questions:
-        if ask_question(q):
-            score += 1
-
-    result = calculate_result(score)
-    print(f"\nScore: {score}/10")
-    print(f"Resultaat: {result}")
+app = Flask(__name__)
+setup_routes(app)
 
 if __name__ == "__main__":
-    start_game()
+    app.run(debug=True)
