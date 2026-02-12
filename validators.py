@@ -1,2 +1,2 @@
-def validate_answer(answer: str) -> bool:
-    return answer in ["1", "2", "3"]
+def valid_answer(answer, options):
+    return answer in options
