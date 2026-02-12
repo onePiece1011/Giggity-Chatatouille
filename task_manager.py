@@ -1,18 +1,12 @@
-from models import Smith, HitResult
-from validators import validate_power
-from utils import wait_for_spacebar_press, duration_to_power
+from validators import validate_answer
 
-def perform_smith_hit(smith: Smith) -> HitResult:
-    duration = wait_for_spacebar_press()
-    raw_power = duration_to_power(duration, smith.max_power)
-    power = validate_power(raw_power, smith.max_power)
-    percentage = power / smith.max_power * 100
+def ask_question(question):
+    print(question.question)
+    for idx, option in enumerate(question.options, start=1):
+        print(f"{idx}. {option}")
 
-    if percentage < 30:
-        desc = "Zwakke slag, de aambeeld lacht je uit."
-    elif percentage < 70:
-        desc = "Redelijke slag, de vonken vliegen."
-    else:
-        desc = "MONSTERHIT! De hele smidse trilt."
+    answer = input("Jouw antwoord (1-3): ")
+    while not validate_answer(answer):
+        answer = input("Ongeldig. Kies 1, 2 of 3: ")
 
-    return HitResult(power=power, percentage=percentage, description=desc)
+    return int(answer) == question.correct_answer
