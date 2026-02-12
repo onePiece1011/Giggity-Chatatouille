@@ -6,20 +6,17 @@
 </head>
 <body>
 <form method="post" class="card slide-up">
-    <h2>Quiz</h2>
-
     {% for q in questions %}
         <div class="question">
-            <p>{{ q.question }}</p>
+            <p>{{ q.text }}</p>
             {% for option in q.options %}
-                <label class="option">
+                <label>
                     <input type="radio" name="q{{ loop.index0 }}" value="{{ option }}" required>
                     {{ option }}
-                </label>
+                </label><br>
             {% endfor %}
         </div>
     {% endfor %}
-
     <button class="btn">Verstuur</button>
 </form>
 </body>
