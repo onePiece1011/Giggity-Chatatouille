@@ -1,12 +1,9 @@
-from validators import validate_answer
+from validators import valid_answer
 
-def ask_question(question):
-    print(question.question)
-    for idx, option in enumerate(question.options, start=1):
-        print(f"{idx}. {option}")
-
-    answer = input("Jouw antwoord (1-3): ")
-    while not validate_answer(answer):
-        answer = input("Ongeldig. Kies 1, 2 of 3: ")
-
-    return int(answer) == question.correct_answer
+def calculate_score(questions, form):
+    score = 0
+    for i, q in enumerate(questions):
+        answer = form.get(f"q{i}")
+        if valid_answer(answer, q.options) and answer == q.correct:
+            score += 1
+    return score
